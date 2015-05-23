@@ -19,7 +19,7 @@ public class ButtonScript : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision col) {
-        if (!isPressed) {
+        if (!isPressed && col.gameObject.layer == LayerMask.NameToLayer("Nose")) {
             GetComponent<MeshRenderer>().material.color = Color.green;
             transform.localPosition += new Vector3(0, 0, 0.1f);
 
