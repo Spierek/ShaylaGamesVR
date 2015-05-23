@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ButtonScript : MonoBehaviour {
     #region Variables
+    public int ID;
+
     private bool isPressed;
     #endregion
 
@@ -20,6 +22,7 @@ public class ButtonScript : MonoBehaviour {
             GetComponent<MeshRenderer>().material.color = Color.green;
             transform.localPosition += new Vector3(0, 0, 0.1f);
 
+            ButtonStatus.Instance.SetButton(ID);
             isPressed = true;
         }
     }
