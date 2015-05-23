@@ -6,6 +6,7 @@ public class DialTrigger : MonoBehaviour {
 		
 		public SafeController safe;
 		public float duration = 1.0f;
+	public Transform[] Numbers;
 		// Use this for initialization
 		void Start () {
 			if (safe == null)
@@ -44,6 +45,7 @@ public class DialTrigger : MonoBehaviour {
 			switch (int.Parse (other.name)) {
 			case 1:
 				StopCoroutine ("Timer" + other.name);//
+				//Numbers[0].localScale*=0.1
 				break;
 			case 2:
 				StopCoroutine ("Timer" + other.name);//
