@@ -39,6 +39,7 @@ QualitySettings:
     Android: 0
     BlackBerry: 0
     FlashPlayer: 0
+    Samsung TV: 0
     Standalone: 0
     WP8: 0
     Web: 0
