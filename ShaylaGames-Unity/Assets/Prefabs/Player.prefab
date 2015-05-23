@@ -1051,7 +1051,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 123808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -.0399999991, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 434296}
@@ -1311,7 +1311,7 @@ TextMesh:
   m_Font: {fileID: 12800000, guid: 98540909c1feed548a99d454b622755a, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 16777215
 --- !u!114 &11410854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noseResizeSpeed: .00999999978
-  noseLengthRange: {x: .5, y: 4}
+  noseLengthRange: {x: .200000003, y: 4}
   raycastPoint: {fileID: 442758}
   twigParent: {fileID: 477358}
   twigPosition: {fileID: 447550}

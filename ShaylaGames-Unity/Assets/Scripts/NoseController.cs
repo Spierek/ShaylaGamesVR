@@ -35,6 +35,7 @@ public class NoseController : MonoBehaviour {
         if (initialDelayTimer > initialDelay) {
             GetScrollDelta();
             if (!RaycastCheck()) {
+                noseLengthLimit = Mathf.Clamp(noseLengthLimit, noseLengthRange.x, noseLengthRange.y);
                 parent.localScale += tempV3;
             }
             ClampNoseLength();
