@@ -3,15 +3,16 @@ using System.Collections;
 
 public class NoseController : MonoBehaviour {
     #region Variables
-    public float noseResizeSpeed = 0.01f;
+    public float        noseResizeSpeed = 0.01f;
+    public Vector2      noseLengthRange = new Vector2(0.5f, 4f);
     
-    private float initialDelayTimer;
-    private float initialDelay = 0.5f;
+    private float       initialDelayTimer;
+    private float       initialDelay = 0.5f;
 
-    private TextMesh textMesh;
-    private Transform parent;
+    private TextMesh    textMesh;
+    private Transform   parent;
 
-    private Vector3 tempV3;
+    private Vector3     tempV3;
     #endregion
 
     #region Monobehaviour Methods
@@ -28,16 +29,17 @@ public class NoseController : MonoBehaviour {
             else {
                UpdateNoseSizeEditor();
             }
+            ClampNoseLength();
         }
         else {
             initialDelayTimer += Time.deltaTime;
         }
 
-        //t.text = Input.GetAxis("Mouse X") + " " + Input.mousePosition.x;
+        textMesh.text = parent.transform.localScale.z.ToString();
     }
 
     private void OnCollisionEnter(Collision col) {
-        textMesh.text = col.gameObject.name;
+        //textMesh.text = col.gameObject.name;
     }
     #endregion
 
@@ -52,6 +54,13 @@ public class NoseController : MonoBehaviour {
             tempV3.z = Input.GetAxis("Mouse X") * noseResizeSpeed;
             parent.localScale -= tempV3;
         }
+    }
+
+    private void ClampNoseLength() {
+        tempV3 = parent.localScale;
+        tempV3.z = Mathf.Clamp(tempV3.z, noseLengthRange.x, noseLengthRange.y);
+        parent.localScale = tempV3;
+        tempV3 = Vector3.zero;
     }
     #endregion
 }
