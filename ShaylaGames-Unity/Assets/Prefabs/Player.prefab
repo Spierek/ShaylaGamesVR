@@ -1180,6 +1180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noseResizeSpeed: .00999999978
+  noseLengthRange: {x: .5, y: 4}
 --- !u!124 &12470912
 Behaviour:
   m_ObjectHideFlags: 1
