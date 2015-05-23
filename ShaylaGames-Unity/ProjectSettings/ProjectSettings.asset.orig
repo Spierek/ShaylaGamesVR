@@ -11,8 +11,13 @@ PlayerSettings:
   targetIOSGraphics: -1
   targetResolution: 0
   accelerometerFrequency: 60
+<<<<<<< HEAD
   companyName: Shayla
   productName: Pinocchio
+=======
+  companyName: Oculus
+  productName: Oculus Sample
+>>>>>>> b4611036dadcd2cbb4abe32dee28e9c4c6f0dade
   cloudProjectId: 
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -94,7 +99,11 @@ PlayerSettings:
   CreateWallpaper: 0
   APKExpansionFiles: 0
   preloadShaders: 0
+<<<<<<< HEAD
+  StripUnusedMeshComponents: 1
+=======
   StripUnusedMeshComponents: 0
+>>>>>>> b4611036dadcd2cbb4abe32dee28e9c4c6f0dade
   iPhoneSdkVersion: 988
   iPhoneTargetOSVersion: 22
   uIPrerenderedIcon: 0
@@ -123,9 +132,15 @@ PlayerSettings:
   iOSLaunchScreenCustomXibPath: 
   AndroidTargetDevice: 3
   AndroidSplashScreenScale: 2
+<<<<<<< HEAD
+  AndroidKeystoreName: C:/Projects/ShaylaGamesVR/ShaylaGames-Unity/pinocchio.keystore
+  AndroidKeyaliasName: pinocchio
+  AndroidTVCompatibility: 0
+=======
   AndroidKeystoreName: 
   AndroidKeyaliasName: 
   AndroidTVCompatibility: 1
+>>>>>>> b4611036dadcd2cbb4abe32dee28e9c4c6f0dade
   AndroidIsGame: 1
   androidEnableBanner: 1
   m_AndroidBanners:
@@ -208,7 +223,11 @@ PlayerSettings:
   ps4ApplicationParam2: 0
   ps4ApplicationParam3: 0
   ps4ApplicationParam4: 0
+<<<<<<< HEAD
   ps4Passcode: 1O8YFOGKjxRrJBdT3hVOfoaMeAjSWfch
+=======
+  ps4Passcode: YdD3ojxSnqPTGfRyilOYGxlSXPtLJboH
+>>>>>>> b4611036dadcd2cbb4abe32dee28e9c4c6f0dade
   ps4pnSessions: 1
   ps4pnPresence: 1
   ps4pnFriends: 1
@@ -219,6 +238,10 @@ PlayerSettings:
   psp2NPTrophyPackPath: 
   psp2NPSupportGBMorGJP: 0
   psp2NPAgeRating: 12
+<<<<<<< HEAD
+=======
+  psp2NPTitleDatPath: 
+>>>>>>> b4611036dadcd2cbb4abe32dee28e9c4c6f0dade
   psp2NPCommsID: 
   psp2NPCommunicationsID: 
   psp2NPCommsPassphrase: 
@@ -233,6 +256,10 @@ PlayerSettings:
   psp2PatchOriginalPackage: 
   psp2PackagePassword: 
   psp2KeystoneFile: 
+<<<<<<< HEAD
+=======
+  psp2MemoryExpansionMode: 0
+>>>>>>> b4611036dadcd2cbb4abe32dee28e9c4c6f0dade
   psp2DRMType: 0
   psp2StorageType: 0
   psp2MediaCapacity: 0
@@ -378,6 +405,10 @@ PlayerSettings:
   XboxOnePackagingOverridePath: 
   XboxOneAppManifestOverridePath: 
   XboxOnePackageEncryption: 0
+<<<<<<< HEAD
+=======
+  XboxOnePackageUpdateGranularity: 2
+>>>>>>> b4611036dadcd2cbb4abe32dee28e9c4c6f0dade
   XboxOneDescription: 
   XboxOneIsContentPackage: 0
   XboxOneEnableGPUVariability: 0
