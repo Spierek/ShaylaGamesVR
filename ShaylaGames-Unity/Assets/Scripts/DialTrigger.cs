@@ -21,13 +21,13 @@ public class DialTrigger : MonoBehaviour {
 		void OnTriggerEnter(Collider other) {
 		if (other.tag == "Number") {
 				
-			Debug.Log ("startTimer for number " + int.Parse (other.name));
+			//Debug.Log ("startTimer for number " + int.Parse (other.name));
 			switch (int.Parse (other.name)) {
 			case 1:
 				StartCoroutine ("Timer" + other.name);//
 				break;
 			case 2:
-				StartCoroutine ("Timer" + other.name);//
+				StartCoroutine ("Timer" + other.name);//;
 				break;
 			case 3:
 				StartCoroutine ("Timer" + other.name);//
@@ -41,11 +41,10 @@ public class DialTrigger : MonoBehaviour {
 		
 		void OnTriggerExit(Collider other){
 		if(other.tag == "Number") {
-			Debug.Log ("stop Timer for number "+ int.Parse(other.name));
+			//Debug.Log ("stop Timer for number "+ int.Parse(other.name));
 			switch (int.Parse (other.name)) {
 			case 1:
 				StopCoroutine ("Timer" + other.name);//
-				//Numbers[0].localScale*=0.1
 				break;
 			case 2:
 				StopCoroutine ("Timer" + other.name);//
