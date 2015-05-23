@@ -6,15 +6,18 @@ public class NoseController : MonoBehaviour {
     public float noseResizeSpeed = 0.01f;
     
     private float initialDelayTimer;
-    private float initialDelay = 2f;
+    private float initialDelay = 0.5f;
 
-    private TextMesh t;
+    private TextMesh textMesh;
+    private Transform parent;
+
     private Vector3 tempV3;
     #endregion
 
     #region Monobehaviour Methods
     private void Awake () {
-        t = transform.parent.GetChild(1).GetComponent<TextMesh>();
+        parent = transform.parent;
+        textMesh = parent.parent.GetChild(1).GetComponent<TextMesh>();
     }
     
     private void Update () {
@@ -32,18 +35,22 @@ public class NoseController : MonoBehaviour {
 
         //t.text = Input.GetAxis("Mouse X") + " " + Input.mousePosition.x;
     }
+
+    private void OnCollisionEnter(Collision col) {
+        textMesh.text = col.gameObject.name;
+    }
     #endregion
 
     #region Methods
     private void UpdateNoseSizeEditor() {
         tempV3.z = Input.mouseScrollDelta.y * noseResizeSpeed * 5f;
-        transform.localScale += tempV3;
+        parent.localScale += tempV3;
     }
 
     private void UpdateNoseSizeGear() {
         if (Input.mousePosition.x != 1280) {
             tempV3.z = Input.GetAxis("Mouse X") * noseResizeSpeed;
-            transform.localScale -= tempV3;
+            parent.localScale -= tempV3;
         }
     }
     #endregion
