@@ -6,11 +6,12 @@ public class ButtonScript : MonoBehaviour {
     public int ID;
 
     private bool isPressed;
+    private ParticleSystem particles;
     #endregion
 
     #region Monobehaviour Methods
     private void Awake () {
-    
+        particles = transform.GetChild(0).GetComponent<ParticleSystem>();
     }
     
     private void Update () {
@@ -23,6 +24,7 @@ public class ButtonScript : MonoBehaviour {
             transform.localPosition += new Vector3(0, 0, 0.1f);
 
             ButtonStatus.Instance.SetButton(ID);
+            particles.Play();
             isPressed = true;
         }
     }
