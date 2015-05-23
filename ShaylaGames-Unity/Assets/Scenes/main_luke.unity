@@ -188,7 +188,7 @@ GameObject:
   - 33: {fileID: 157140531}
   - 65: {fileID: 157140530}
   - 23: {fileID: 157140529}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 825901016}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &858918469
+--- !u!1001 &896238982
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Runtime.Remoting.Messaging;
+using UnityEngine;
 using System.Collections;
 
 public class NoseController : MonoBehaviour {
@@ -6,8 +7,7 @@ public class NoseController : MonoBehaviour {
     public float        noseResizeSpeed = 0.01f;
     public Vector2      noseLengthRange = new Vector2(0.5f, 4f);
     [Space(10)]
-    public Transform    raycastFront;
-    public Transform    raycastBack;
+    public Transform    raycastPoint;
     [Space(10)]
     public Transform    twigParent;
     public Transform    twigPosition;
@@ -16,24 +16,26 @@ public class NoseController : MonoBehaviour {
     
     private float       initialDelayTimer;
     private float       initialDelay = 0.5f;
+    private float       noseLengthLimit;
 
     private Transform   parent;
 
     private Vector3     tempV3;
+    private Ray         ray;
+    private RaycastHit  hit;
     #endregion
 
     #region Monobehaviour Methods
     private void Awake () {
         parent = transform.parent;
+        noseLengthLimit = noseLengthRange.y;
     }
     
     private void Update () {
         if (initialDelayTimer > initialDelay) {
-            if (SystemInfo.deviceName == "<unknown>") {
-                UpdateNoseSizeGear();
-            }
-            else {
-               UpdateNoseSizeEditor();
+            GetScrollDelta();
+            if (!RaycastCheck()) {
+                parent.localScale += tempV3;
             }
             ClampNoseLength();
         }
@@ -42,8 +44,6 @@ public class NoseController : MonoBehaviour {
         }
 
         UpdateTwigPosition();
-
-        textMesh.text = parent.transform.localScale.z.ToString();
     }
 
     private void OnCollisionEnter(Collision col) {
@@ -52,21 +52,33 @@ public class NoseController : MonoBehaviour {
     #endregion
 
     #region Methods
-    private void UpdateNoseSizeEditor() {
-        tempV3.z = Input.mouseScrollDelta.y * noseResizeSpeed * 5f;
-        parent.localScale += tempV3;
+    private void GetScrollDelta() {
+        // desktop
+        if (SystemInfo.deviceName != "<unknown>") {
+            tempV3.z = Input.mouseScrollDelta.y * noseResizeSpeed * 5f;
+        }
+        // gear vr
+        else if (Input.mousePosition.x != 1280) {
+            tempV3.z = -Input.GetAxis("Mouse X") * noseResizeSpeed;
+        }
     }
 
-    private void UpdateNoseSizeGear() {
-        if (Input.mousePosition.x != 1280) {
-            tempV3.z = Input.GetAxis("Mouse X") * noseResizeSpeed;
-            parent.localScale -= tempV3;
+    private bool RaycastCheck() {
+        ray.origin = raycastPoint.position;
+        ray.direction = transform.forward;
+        if (Physics.Raycast(ray, out hit, noseLengthRange.y, 1 << LayerMask.NameToLayer("Static"))) {
+            textMesh.text = hit.collider.gameObject.name;
+            noseLengthLimit = Vector3.Distance(hit.point, ray.origin);
+            return false;
         }
+
+        noseLengthLimit = noseLengthRange.y;
+        return false;
     }
 
     private void ClampNoseLength() {
         tempV3 = parent.localScale;
-        tempV3.z = Mathf.Clamp(tempV3.z, noseLengthRange.x, noseLengthRange.y);
+        tempV3.z = Mathf.Clamp(tempV3.z, noseLengthRange.x, noseLengthLimit);
         parent.localScale = tempV3;
         tempV3 = Vector3.zero;
     }
