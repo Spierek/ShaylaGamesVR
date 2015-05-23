@@ -5,11 +5,18 @@ public class NoseController : MonoBehaviour {
     #region Variables
     public float        noseResizeSpeed = 0.01f;
     public Vector2      noseLengthRange = new Vector2(0.5f, 4f);
+    [Space(10)]
+    public Transform    raycastFront;
+    public Transform    raycastBack;
+    [Space(10)]
+    public Transform    twigParent;
+    public Transform    twigPosition;
+    [Space(10)]
+    public TextMesh     textMesh;
     
     private float       initialDelayTimer;
     private float       initialDelay = 0.5f;
 
-    private TextMesh    textMesh;
     private Transform   parent;
 
     private Vector3     tempV3;
@@ -18,7 +25,6 @@ public class NoseController : MonoBehaviour {
     #region Monobehaviour Methods
     private void Awake () {
         parent = transform.parent;
-        textMesh = parent.parent.GetChild(1).GetComponent<TextMesh>();
     }
     
     private void Update () {
@@ -34,6 +40,8 @@ public class NoseController : MonoBehaviour {
         else {
             initialDelayTimer += Time.deltaTime;
         }
+
+        UpdateTwigPosition();
 
         textMesh.text = parent.transform.localScale.z.ToString();
     }
@@ -61,6 +69,10 @@ public class NoseController : MonoBehaviour {
         tempV3.z = Mathf.Clamp(tempV3.z, noseLengthRange.x, noseLengthRange.y);
         parent.localScale = tempV3;
         tempV3 = Vector3.zero;
+    }
+
+    private void UpdateTwigPosition() {
+        twigParent.position = twigPosition.position;
     }
     #endregion
 }
