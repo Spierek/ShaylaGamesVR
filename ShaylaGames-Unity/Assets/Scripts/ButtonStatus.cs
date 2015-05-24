@@ -25,19 +25,20 @@ public class ButtonStatus : MonoBehaviour {
         buttons[ID] = true;
         transform.GetChild(ID).GetComponent<MeshRenderer>().material.color = Color.green;
 
-        CheckButtons();
-    }
-
-    private void CheckButtons() {
-        bool check = true;
-        for (int i = 0; i < buttonCount; ++i) {
-            check = buttons[i];
-        }
-
-        if (check) {
+        if (CheckButtons()) {
             // TODO: do something
             Debug.Log("all buttons pressed");
         }
+    }
+
+    private bool CheckButtons() {
+        for (int i = 0; i < buttonCount; ++i) {
+            if (!buttons[i]) {
+                return false;
+            }
+        }
+
+        return true;
     }
     #endregion
 }
