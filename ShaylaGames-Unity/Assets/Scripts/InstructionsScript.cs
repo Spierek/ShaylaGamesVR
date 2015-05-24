@@ -18,7 +18,8 @@ public class InstructionsScript : MonoBehaviour {
     }
     
     private void Update () {
-        if (timer > initialDelay && Input.GetMouseButtonDown(0)) {
+        if (isVisible && timer > initialDelay && Input.GetMouseButtonDown(0)) {
+            isVisible = false;
             StartCoroutine(Hide());
         }
 
