@@ -16,9 +16,11 @@ public class NoseController : MonoBehaviour {
     
     private float       initialDelayTimer;
     private float       initialDelay = 0.5f;
-    private float       noseLengthLimit;
+    private float       desiredNoseLength;
+    private float       maximumAllowedNoseLength;
 
     private Transform   parent;
+    private Vector3     initialScale;
 
     private Vector3     tempV3;
     private Ray         ray;
@@ -28,21 +30,23 @@ public class NoseController : MonoBehaviour {
     #region Monobehaviour Methods
     private void Awake () {
         parent = transform.parent;
-        noseLengthLimit = noseLengthRange.y;
+        initialScale = parent.localScale;
+        desiredNoseLength = noseLengthRange.x;
+        maximumAllowedNoseLength = noseLengthRange.y;
     }
     
     private void Update () {
         if (initialDelayTimer > initialDelay) {
-            GetScrollDelta();
+            GetDesiredNoseLength();
             if (!RaycastCheck()) {
-                noseLengthLimit = Mathf.Clamp(noseLengthLimit, noseLengthRange.x, noseLengthRange.y);
-                parent.localScale += tempV3;
+                CalculateNoseLength();
             }
-            ClampNoseLength();
         }
         else {
             initialDelayTimer += Time.deltaTime;
         }
+
+        textMesh.text = desiredNoseLength + " " + maximumAllowedNoseLength;
 
         UpdateTwigPosition();
     }
@@ -53,7 +57,7 @@ public class NoseController : MonoBehaviour {
     #endregion
 
     #region Methods
-    private void GetScrollDelta() {
+    private void GetDesiredNoseLength() {
         // desktop
         if (SystemInfo.deviceName != "<unknown>") {
             tempV3.z = Input.mouseScrollDelta.y * noseResizeSpeed * 5f;
@@ -62,6 +66,9 @@ public class NoseController : MonoBehaviour {
         else if (Input.mousePosition.x != 1280) {
             tempV3.z = -Input.GetAxis("Mouse X") * noseResizeSpeed;
         }
+
+        desiredNoseLength += tempV3.z;
+        desiredNoseLength = Mathf.Clamp(desiredNoseLength, noseLengthRange.x, noseLengthRange.y);
     }
 
     private bool RaycastCheck() {
@@ -69,17 +76,15 @@ public class NoseController : MonoBehaviour {
         ray.direction = transform.forward;
         if (Physics.Raycast(ray, out hit, noseLengthRange.y, 1 << LayerMask.NameToLayer("Static"))) {
             textMesh.text = hit.collider.gameObject.name;
-            noseLengthLimit = Vector3.Distance(hit.point, ray.origin);
+            maximumAllowedNoseLength = Vector3.Distance(hit.point, ray.origin);
             return false;
         }
-
-        noseLengthLimit = noseLengthRange.y;
         return false;
     }
 
-    private void ClampNoseLength() {
-        tempV3 = parent.localScale;
-        tempV3.z = Mathf.Clamp(tempV3.z, noseLengthRange.x, noseLengthLimit);
+    private void CalculateNoseLength() {
+        tempV3 = initialScale;
+        tempV3.z = Mathf.Clamp(desiredNoseLength, noseLengthRange.x, maximumAllowedNoseLength);
         parent.localScale = tempV3;
         tempV3 = Vector3.zero;
     }
