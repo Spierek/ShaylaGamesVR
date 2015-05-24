@@ -23,7 +23,12 @@ public class ButtonScript : MonoBehaviour {
             GetComponent<MeshRenderer>().material.color = Color.green;
             transform.localPosition += new Vector3(0, 0, 0.1f);
 
-            ButtonStatus.Instance.SetButton(ID);
+            if (ID < 5) {
+                ButtonStatus.Instance.SetButton(ID);
+            }
+            else {
+                Debug.Log("opening the door");
+            }
             particles.Play();
             isPressed = true;
         }
