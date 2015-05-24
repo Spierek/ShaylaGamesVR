@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: door_4
+  m_Name: RoomWall
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -18,7 +18,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 1a30123832624694aa8c6267c48d7aa5, type: 3}
+          m_Texture: {fileID: 2800000, guid: e5c20f57ae0ea5e46895ff693602d5f8, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -101,7 +101,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: .203999996
+        second: .43900001
       data:
         first:
           name: _BumpScale
@@ -129,7 +129,7 @@ Material:
       data:
         first:
           name: _Metallic
-        second: 1
+        second: .0439999998
     m_Colors:
       data:
         first:
@@ -138,11 +138,8 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .595588207, g: .595588207, b: .595588207, a: 1}
+        second: {r: .0661764741, g: .0661764741, b: .0661764741, a: 1}
       data:
         first:
           name: _EmissionColorUI
         second: {r: 1, g: 1, b: 1, a: 1}
---- !u!1002 &2100001
-EditorExtensionImpl:
-  serializedVersion: 6

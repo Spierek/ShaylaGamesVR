@@ -27,7 +27,7 @@ public class ButtonScript : MonoBehaviour {
                 ButtonStatus.Instance.SetButton(ID);
             }
             else {
-                Debug.Log("opening the door");
+                RoomDoorScript.Instance.OpenDoor();
             }
             particles.Play();
             isPressed = true;

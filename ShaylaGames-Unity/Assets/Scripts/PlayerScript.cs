@@ -4,27 +4,29 @@ using UnityStandardAssets.ImageEffects;
 
 public class PlayerScript : MonoBehaviour {
     #region Variables
+    public static PlayerScript Instance;
+
     public Bloom bloomLeft;
     public Bloom bloomRight;
     #endregion
 
     #region Monobehaviour Methods
     private void Awake () {
-    
+        Instance = this;
     }
     
     private void Update () {
         if (Input.GetKeyDown(KeyCode.R)) {
             Application.LoadLevel(0);
         }
-
-        if (Input.GetKeyDown(KeyCode.B)) {
-            StartCoroutine(FinalBloom());
-        }
     }
     #endregion
 
     #region Methods
+    public void ActivateBloom() {
+        StartCoroutine(FinalBloom());
+    }
+
     private IEnumerator FinalBloom() {
         float timer = 0;
         float duration = 5f;
