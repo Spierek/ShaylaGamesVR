@@ -12,9 +12,6 @@ public class ValveIncrements : MonoBehaviour {
 	private Vector3 startDirection;
 	private float buffer = 2f;
 	private bool above = false;
-	public Transform Cover;
-	public Transform CoverEndPos;
-	public Transform CoverStartPos;
 	//public Animator displayAnim;
 	void Start () {
 		startDirection = (valvePoint.position - centerPoint.position);
@@ -64,8 +61,8 @@ public class ValveIncrements : MonoBehaviour {
 		float tempIncrement = (Mathf.Max(turnCount-360f,0f) + currentAngle) / ((float)nbrTurns * 360);
 		if (Mathf.Abs (increment - tempIncrement) < 0.1)
 		   increment = tempIncrement;
-		Cover.position = Vector3.Lerp (CoverStartPos.position, CoverEndPos.position, increment);
-		Cover.rotation = Quaternion.Lerp (CoverStartPos.rotation, CoverEndPos.rotation, increment);
+
+        FrameScript.Instance.UpdateHeight(increment);
 
 		//Debug.Log (increment);
 		//displayAnim.SetFloat ("AnimProgress", increment);

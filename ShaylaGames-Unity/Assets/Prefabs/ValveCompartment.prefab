@@ -659,10 +659,7 @@ MonoBehaviour:
   valvePoint: {fileID: 432322}
   centerPoint: {fileID: 484674}
   increment: 0
-  nbrTurns: 5
-  Cover: {fileID: 0}
-  CoverEndPos: {fileID: 0}
-  CoverStartPos: {fileID: 0}
+  nbrTurns: 3
 --- !u!114 &11440694
 MonoBehaviour:
   m_ObjectHideFlags: 1
