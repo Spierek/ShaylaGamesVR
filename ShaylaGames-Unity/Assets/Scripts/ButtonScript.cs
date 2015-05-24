@@ -21,7 +21,7 @@ public class ButtonScript : MonoBehaviour {
     private void OnCollisionEnter(Collision col) {
         if (!isPressed && col.gameObject.layer == LayerMask.NameToLayer("Nose")) {
             GetComponent<MeshRenderer>().material.color = Color.green;
-            transform.localPosition += new Vector3(0, 0, 0.1f);
+            transform.localPosition += new Vector3(0, 0, 0.08f);
 
             if (ID < 5) {
                 ButtonStatus.Instance.SetButton(ID);

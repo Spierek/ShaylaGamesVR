@@ -29,7 +29,7 @@ public class InstructionsScript : MonoBehaviour {
 
     #region Methods
     private IEnumerator Hide() {
-        float duration = 2f;
+        float duration = 1f;
         float t = duration;
         tempC = sprite.color;
 
