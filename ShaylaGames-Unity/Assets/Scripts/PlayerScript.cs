@@ -41,6 +41,20 @@ public class PlayerScript : MonoBehaviour {
 
         tempC.a = 1;
         fade.color = tempC;
+
+        timer = 0;
+        duration = 2f;
+        while (timer < duration) {
+            tempC.r = Mathf.Lerp(1, 0, timer / duration);
+            tempC.g = Mathf.Lerp(1, 0, timer / duration);
+            tempC.b = Mathf.Lerp(1, 0, timer / duration);
+            fade.color = tempC;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        Application.LoadLevel(0);
     }
     #endregion
 }
