@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noseResizeSpeed: .00999999978
-  noseLengthRange: {x: .200000003, y: 4}
+  noseLengthRange: {x: .25, y: 4}
   raycastPoint: {fileID: 442758}
   twigParent: {fileID: 477358}
   twigPosition: {fileID: 447550}
