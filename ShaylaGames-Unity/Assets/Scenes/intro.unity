@@ -171,7 +171,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 111114159}
-  m_Text: Tap touchpad to start
+  m_Text: Hold touchpad to start
   m_OffsetZ: 0
   m_CharacterSize: .0500000007
   m_LineSpacing: 1
@@ -586,7 +586,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1001 &1018377404
 Prefab:
   m_ObjectHideFlags: 0
