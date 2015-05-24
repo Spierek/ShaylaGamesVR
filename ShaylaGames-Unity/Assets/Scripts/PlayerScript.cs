@@ -6,8 +6,7 @@ public class PlayerScript : MonoBehaviour {
     #region Variables
     public static PlayerScript Instance;
 
-    public Bloom bloomLeft;
-    public Bloom bloomRight;
+    public SpriteRenderer fade;
     #endregion
 
     #region Monobehaviour Methods
@@ -29,19 +28,19 @@ public class PlayerScript : MonoBehaviour {
 
     private IEnumerator FinalBloom() {
         float timer = 0;
-        float duration = 5f;
-        float finalBloom = 15f;
+        float duration = 3f;
+        Color tempC = Color.white;
 
         while (timer < duration) {
-            bloomLeft.bloomIntensity = Mathf.Lerp(0, finalBloom, timer / duration);
-            bloomRight.bloomIntensity = Mathf.Lerp(0, finalBloom, timer / duration);
+            tempC.a = Mathf.Lerp(0, 1, timer / duration);
+            fade.color = tempC;
 
             timer += Time.deltaTime;
             yield return null;
         }
 
-        bloomLeft.bloomIntensity = finalBloom;
-        bloomRight.bloomIntensity = finalBloom;
+        tempC.a = 1;
+        fade.color = tempC;
     }
     #endregion
 }

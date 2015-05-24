@@ -26,7 +26,7 @@ public class RoomDoorScript : MonoBehaviour {
 
     private IEnumerator Open() {
         float timer = 0;
-        float duration = 2f;
+        float duration = 3f;
         PlayerScript.Instance.ActivateBloom();
 
         while (timer < duration) {
