@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ValveCompartment : MonoBehaviour {
     #region Variables
+    public static ValveCompartment Instance;
+
     public float            desiredYOffset = -0.7f;
 
     private Vector3         initialPosition;
@@ -12,20 +14,16 @@ public class ValveCompartment : MonoBehaviour {
 
     #region Monobehaviour Methods
     private void Awake () {
+        Instance = this;
+
         initialPosition = transform.localPosition;
         particles = transform.GetChild(0).GetComponent<ParticleSystem>();
-    }
-    
-    private void Update () {
-        if (Input.GetKeyDown(KeyCode.T)) {
-            StartCoroutine(SlideDown());
-        }
     }
     #endregion
 
     #region Methods
     public void Open() {
-        if (wasActivated) {
+        if (!wasActivated) {
             wasActivated = true;
             StartCoroutine(SlideDown());
         }

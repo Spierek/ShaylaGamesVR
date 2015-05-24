@@ -26,8 +26,7 @@ public class ButtonStatus : MonoBehaviour {
         transform.GetChild(ID).GetComponent<MeshRenderer>().material.color = Color.green;
 
         if (CheckButtons()) {
-            // TODO: do something
-            Debug.Log("all buttons pressed");
+            ValveCompartment.Instance.Open();
         }
     }
 
